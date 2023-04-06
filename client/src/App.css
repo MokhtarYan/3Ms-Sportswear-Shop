@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.image {
+  height: 40px;
+  width: 50px;
+}

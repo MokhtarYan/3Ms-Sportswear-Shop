@@ -1,0 +1,5 @@
+{
+  "db": "mongodb+srv://MokhtarYan:MokhtarYan-5994@mccluster.fp2rwcd.mongodb.net/finalProject?retryWrites=true&w=majority",
+  "PORT": 8000,
+  "secret": "shhhhhhh"
+}

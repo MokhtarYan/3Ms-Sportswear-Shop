@@ -46,8 +46,7 @@ exports.register = async (req, res) => {
           userRole: newUser.userRole,
         },
       });
-      // send email via nodemailer
-      // sendConfirmationMail(newUser.email, newUser.activationCode);
+      sendConfirmationMail(newUser.email, newUser.activationCode);
     } catch (error) {
       res.status(500).json({ msg: error.message });
     }
@@ -116,14 +115,14 @@ exports.updateUser = async (req, res) => {
   }
 };
 
-exports.verifyUser = (req, res) => {
-  User.find({ activationCode: req.params.activationCode }).then((user) => {
-    if (!user) {
-      res.send({ msg: "This activation code doesn't exist" });
-    } else {
-      user.isActive = true;
-      user.save();
-      res.send({ msg: "Your account is activated now!" });
-    }
-  });
-};
+// exports.verifyUser = (req, res) => {
+//   User.find({ activationCode: req.params.activationCode }).then((user) => {
+//     if (!user) {
+//       res.send({ msg: "This activation code doesn't exist" });
+//     } else {
+//       user.isActive = true;
+//       user.save();
+//       res.send({ msg: "Your account is activated now!" });
+//     }
+//   });
+// };

@@ -1,0 +1,12 @@
+.imageCart {
+  height: 70px;
+  width: auto;
+}
+.Total {
+  display: flex;
+
+  align-items: center;
+  width: fit-content;
+  height: 50px;
+  justify-content: space-around;
+}

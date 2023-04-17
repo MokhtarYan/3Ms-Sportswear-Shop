@@ -1,16 +1,20 @@
 import {
+  LOGIN,
+  GET_ALL_USERS,
   GET_PROFILE,
   GET_PROFILE_FAIL,
   GET_PROFILE_SUCCESS,
-  LOGIN,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   REGISTER,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
-} from "../actionTypes";
+  UPDATE_USER,
+  USER_LOGOUT,
+} from "../actionTypes/UserActionTypes";
 
 const init = {
+  usersList: null,
   users: null,
   loading: false,
   errors: null,
@@ -40,6 +44,7 @@ const userReducer = (state = init, { type, payload }) => {
         errors: null,
         users: payload.user,
         token: payload.token,
+        isAuth: true,
       };
     case GET_PROFILE_SUCCESS:
       return {
@@ -57,6 +62,23 @@ const userReducer = (state = init, { type, payload }) => {
         loading: false,
         errors: payload,
       };
+    case USER_LOGOUT:
+      return {
+        ...state,
+        isAuth: false,
+        users: null,
+      };
+    case GET_ALL_USERS:
+      return { ...state, loading: false, error: null, usersList: payload };
+
+    case UPDATE_USER:
+      return {
+        ...state,
+        usersList: state.usersList.map((el) =>
+          el._id === payload._id ? payload : el
+        ),
+      };
+
     default:
       return state;
   }

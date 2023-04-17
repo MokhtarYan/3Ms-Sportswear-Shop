@@ -15,7 +15,7 @@ const router = express.Router();
 router.post("/register", registerRules(), validatorr, register);
 
 router.post("/login", login);
-router.post("/auth/verifyUser/:activationCode", verifyUser);
+// router.post("/auth/verifyUser/:activationCode", verifyUser);
 
 router.get("/auth", verifyAuth, auth);
 

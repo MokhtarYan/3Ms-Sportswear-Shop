@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import userReducer from "../redux/reducers/userReducer";
 import { Navigate } from "react-router-dom";
-import { getProfile } from "../redux/action";
+import { getProfile } from "../redux/actions/actionUsers";
+
 const Profile = () => {
   const { users, isAuth } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProfile());
+    console.log(isAuth);
   }, []);
 
   return (
@@ -15,7 +17,7 @@ const Profile = () => {
       {isAuth ? (
         <div> Hello {users.fullName}!</div>
       ) : (
-        <Navigate to="/signin"></Navigate>
+        <Navigate replace to="/signin"></Navigate>
       )}
     </div>
   );

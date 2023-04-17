@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../redux/action";
+
 import userReducer from "../redux/reducers/userReducer";
 import { Navigate } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
+import { MDBBtn, MDBBtnGroup, MDBInput, MDBRow } from "mdb-react-ui-kit";
+import { loginUser } from "../redux/actions/actionUsers";
 
 const SignIn = () => {
   const [email, setEmail] = useState();
@@ -16,28 +19,38 @@ const SignIn = () => {
   };
   const { loading, errors } = useSelector((state) => state.userReducer);
   return (
-    <div>
-      <form action="" onSubmit={handleSubmit}>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <form action="" onSubmit={handleSubmit} className="formSignup">
         {loading ? (
-          <h1>loading...</h1>
+          <Spinner animation="border" variant="primary" />
         ) : localStorage.getItem("token") ? (
-          <Navigate to="/profile"></Navigate>
+          <Navigate replace to="/product/allProducts"></Navigate>
         ) : (
           <>
-            <label htmlFor="">E-mail</label>
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label htmlFor="">Password</label>
-            <input
-              type="text"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <MDBRow>
+              <label htmlFor="" className="lab">
+                E-mail adress
+              </label>
+              <MDBInput
+                type="email"
+                className="inputSignup"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <label htmlFor="" className="lab">
+                Password
+              </label>
+              <MDBInput
+                type="password"
+                className="inputSignup"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </MDBRow>
             {errors ? <p>{errors.msg}</p> : null}
-            <button type="submit">Sign in</button>
+            <MDBBtn type="submit" className="mb-4" block>
+              SIGN IN
+            </MDBBtn>
           </>
         )}
       </form>

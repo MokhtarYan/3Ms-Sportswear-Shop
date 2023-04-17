@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Oswald&display=swap");
+
+.logo {
+  height: 40px;
+  width: 50px;
+}
+.register {
+  text-decoration: none;
+  color: black;
+}
+.logoutButton {
+  height: fit-content;
+  background-color: white;
+  border: none;
+}
+.Logo {
+  font-family: Oswald, "Courier New", Courier, monospace;
+}
+.header {
+  border-bottom: 1px rgb(11, 7, 7) solid;
+  padding-bottom: 10px;
+  background: linear-gradient(
+    0deg,
+    rgba(200, 200, 200, 1) 0%,
+    rgba(255, 250, 250, 1) 27%
+  );
+}
+.nav2 {
+  text-decoration: none;
+  color: black;
+}

@@ -7,3 +7,18 @@
   height: 40px;
   width: 50px;
 }
+.formSignup {
+  margin-top: 100px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3px grey;
+}
+.inputSignup {
+  width: 500px;
+  margin: 10px;
+}
+.lab {
+  margin-left: 10px;
+}

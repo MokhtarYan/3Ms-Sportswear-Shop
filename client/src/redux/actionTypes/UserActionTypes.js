@@ -11,3 +11,9 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const GET_PROFILE = "GET_PROFILE";
 export const GET_PROFILE_SUCCESS = "GET_PROFILE_SUCCESS";
 export const GET_PROFILE_FAIL = "GET_PROFILE_FAIL";
+//Log out
+export const USER_LOGOUT = "USER_LOGOUT";
+//Get all users
+export const GET_ALL_USERS = "GET_ALL_USERS";
+//update user
+export const UPDATE_USER = "UPDATE_USER";

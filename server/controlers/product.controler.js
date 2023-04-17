@@ -78,7 +78,7 @@ exports.getProduct = async (req, res) => {
   try {
     const selectedProduct = await Product.findById(req.params._id);
     selectedProduct
-      ? res.status(204).send(selectedProduct)
+      ? res.status(201).send(selectedProduct)
       : res.status(404).json({ msg: "Product not found!" });
   } catch (error) {
     res.status(504).json({ msg: error.message });

@@ -10,7 +10,7 @@ const cartSchema = new Schema({
         ref: "product",
       },
 
-      quantity: { type: Number, default: 1 },
+      qty: { type: Number, default: 1 },
       price: Number,
     },
   ],

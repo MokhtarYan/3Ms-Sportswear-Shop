@@ -2,12 +2,10 @@ import {
   ADD_PRODUCT,
   ADD_PRODUCT_FAIL,
   ADD_PRODUCT_SUCCESS,
-  ADIDAS_PRODUCTS,
   DELETE_PRODUCT,
   GET_PRODUCTS,
+  KIDS_PRODUCTS,
   MEN_PRODUCTS,
-  NIKE_PRODUCTS,
-  PUMA_PRODUCTS,
   UPDATE_PRODUCT,
   WOMEN_PRODUCTS,
 } from "../actionTypes/ProductsActionTypes";
@@ -17,6 +15,8 @@ const init = {
   error: null,
   loading: true,
   product1: null,
+  Wproduct: null,
+  Mproduct: null,
 };
 
 export const productReducer = (state = init, { type, payload }) => {
@@ -52,13 +52,27 @@ export const productReducer = (state = init, { type, payload }) => {
         ...state,
         products: state.products.filter((el) => el._id !== payload),
       };
+    case WOMEN_PRODUCTS:
+      return {
+        ...state,
+        Wproduct: payload,
+        loading: false,
+      };
+    case MEN_PRODUCTS:
+      return {
+        ...state,
+        Mproduct: payload,
+        loading: false,
+      };
+
+    case KIDS_PRODUCTS:
+      return {
+        ...state,
+        product1: payload,
+        loading: false,
+      };
 
     case GET_PRODUCTS:
-    case WOMEN_PRODUCTS:
-    case MEN_PRODUCTS:
-    case NIKE_PRODUCTS:
-    case PUMA_PRODUCTS:
-    case ADIDAS_PRODUCTS:
       return {
         ...state,
         products: payload,

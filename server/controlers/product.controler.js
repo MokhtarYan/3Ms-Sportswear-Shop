@@ -85,43 +85,10 @@ exports.getProduct = async (req, res) => {
   }
 };
 
-exports.getNike = async (req, res) => {
-  try {
-    const nikeProducts = await Product.find({ brand: "Nike" });
-    nikeProducts
-      ? res.status(201).json(nikeProducts)
-      : res.status(401).json({ msg: "get Nike Products error" });
-  } catch (error) {
-    res.status(501).json({ msg: error.message });
-  }
-};
-
-exports.getAdidas = async (req, res) => {
-  try {
-    const adidasProducts = await Product.find({ brand: "Adidas" });
-    adidasProducts
-      ? res.status(201).json(adidasProducts)
-      : res.status(401).json({ msg: "get Adidas Products error" });
-  } catch (error) {
-    res.status(501).json({ msg: error.message });
-  }
-};
-
-exports.getPuma = async (req, res) => {
-  try {
-    const pumaProducts = await Product.find({ brand: "Puma" });
-    pumaProducts
-      ? res.status(201).json(pumaProducts)
-      : res.status(401).json({ msg: "get Puma Products error" });
-  } catch (error) {
-    res.status(501).json({ msg: error.message });
-  }
-};
-
 exports.getMen = async (req, res) => {
   try {
     const menProducts = await Product.find({ category: "Men" });
-    pumaProducts
+    menProducts
       ? res.status(201).json(menProducts)
       : res.status(401).json({ msg: "get Men Products error" });
   } catch (error) {
@@ -131,9 +98,20 @@ exports.getMen = async (req, res) => {
 exports.getWomen = async (req, res) => {
   try {
     const womenProducts = await Product.find({ category: "Women" });
-    pumaProducts
+    womenProducts
       ? res.status(201).json(womenProducts)
       : res.status(401).json({ msg: "get Women Products error" });
+  } catch (error) {
+    res.status(501).json({ msg: error.message });
+  }
+};
+
+exports.getKids = async (req, res) => {
+  try {
+    const kidsProducts = await Product.find({ category: "Kids" });
+    kidsProducts
+      ? res.status(201).json(kidsProducts)
+      : res.status(401).json({ msg: "get Kids Products error" });
   } catch (error) {
     res.status(501).json({ msg: error.message });
   }

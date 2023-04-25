@@ -2,8 +2,10 @@ import React from "react";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./header.css";
-
+import { useSelector } from "react-redux";
+import userReducer from "../../redux/reducers/userReducer";
 const HeaderNavv = () => {
+  const { users, loading } = useSelector((state) => state.userReducer);
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -11,6 +13,16 @@ const HeaderNavv = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
+              {users ? (
+                users.userRole === "admin" ? (
+                  <Nav.Link>
+                    {" "}
+                    <Link to={"/user/userList"} className="nav2">
+                      Users
+                    </Link>
+                  </Nav.Link>
+                ) : null
+              ) : null}
               <Nav.Link>
                 {" "}
                 <Link to={"/product/allProducts"} className="nav2">
@@ -29,23 +41,12 @@ const HeaderNavv = () => {
                   Men
                 </Link>
               </Nav.Link>
-              <NavDropdown title="Brands" id="basic-nav-dropdown">
-                <NavDropdown.Item>
-                  <Link to={"/product/Nike"} className="nav2">
-                    Nike
-                  </Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to={"/product/Adidas"} className="nav2">
-                    Adidas
-                  </Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  <Link to={"/product/Puma"} className="nav2">
-                    Puma
-                  </Link>
-                </NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link>
+                {" "}
+                <Link to={"/product/Kids"} className="nav2">
+                  Kids
+                </Link>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

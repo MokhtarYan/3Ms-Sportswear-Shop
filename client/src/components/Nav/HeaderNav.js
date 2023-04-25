@@ -71,7 +71,7 @@ const MenuItem = styled.div`
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
-const HeaderNav = () => {
+const HeaderNav = ({ search, handleChange }) => {
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.userReducer);
   console.log(isAuth);
@@ -84,9 +84,19 @@ const HeaderNav = () => {
         <Wrapper>
           <Left>
             <Language>EN</Language>
-            <SearchContainer>
-              <Input placeholder="Search" />
-            </SearchContainer>
+            {isAuth ? (
+              <SearchContainer>
+                <Input
+                  placeholder="Search"
+                  value={search}
+                  onChange={handleChange}
+                />
+              </SearchContainer>
+            ) : (
+              <SearchContainer>
+                <Input placeholder="Search" />
+              </SearchContainer>
+            )}
           </Left>
           <Center>
             <Logo className="Logo">

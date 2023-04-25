@@ -88,7 +88,7 @@ export const getAllUsers = () => async (dispatch) => {
   }
 };
 
-export const editeUser = (user) => async (dispatch) => {
+export const editedUser = (user) => async (dispatch) => {
   try {
     const res = await axios.put(`/user/update/${user._id}`, user);
     dispatch({

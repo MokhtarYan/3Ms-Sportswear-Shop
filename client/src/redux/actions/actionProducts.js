@@ -2,12 +2,10 @@ import {
   ADD_PRODUCT,
   ADD_PRODUCT_FAIL,
   ADD_PRODUCT_SUCCESS,
-  ADIDAS_PRODUCTS,
   DELETE_PRODUCT,
   GET_PRODUCTS,
+  KIDS_PRODUCTS,
   MEN_PRODUCTS,
-  NIKE_PRODUCTS,
-  PUMA_PRODUCTS,
   UPDATE_PRODUCT,
   WOMEN_PRODUCTS,
 } from "../actionTypes/ProductsActionTypes";
@@ -80,7 +78,7 @@ export const getWomenProd = () => async (dispatch) => {
   }
 };
 
-export const geMenProd = () => async (dispatch) => {
+export const getMenProd = () => async (dispatch) => {
   try {
     const res = await axios.get("/product/Men");
     dispatch({
@@ -92,38 +90,14 @@ export const geMenProd = () => async (dispatch) => {
   }
 };
 
-export const getNikeProd = () => async (dispatch) => {
+export const getKidsProd = () => async (dispatch) => {
   try {
-    const res = await axios.get("/product/Nike");
+    const res = await axios.get("/product/Kids");
     dispatch({
-      type: NIKE_PRODUCTS,
+      type: KIDS_PRODUCTS,
       payload: res.data,
     });
   } catch (error) {
-    alert("get Nike products error");
-  }
-};
-
-export const getPumaProd = () => async (dispatch) => {
-  try {
-    const res = await axios.get("/product/Puma");
-    dispatch({
-      type: PUMA_PRODUCTS,
-      payload: res.data,
-    });
-  } catch (error) {
-    alert("get Puma products error");
-  }
-};
-
-export const getAdidasProd = () => async (dispatch) => {
-  try {
-    const res = await axios.get("/product/Adidas");
-    dispatch({
-      type: ADIDAS_PRODUCTS,
-      payload: res.data,
-    });
-  } catch (error) {
-    alert("get Adidas products error");
+    alert("get kids products error");
   }
 };

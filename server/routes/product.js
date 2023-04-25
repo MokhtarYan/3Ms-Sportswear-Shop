@@ -2,13 +2,11 @@ const {
   addProduct,
   getAllProducts,
   updateProduct,
-  getNike,
-  getAdidas,
-  getPuma,
   getMen,
   getWomen,
   deleteProduct,
   getProduct,
+  getKids,
 } = require("../controlers/product.controler");
 
 const express = require("express");
@@ -19,9 +17,7 @@ router.get("/allProducts", getAllProducts);
 router.put("/updateProduct/:_id", updateProduct);
 router.get("/getProduct/:_id", getProduct);
 router.delete("/deleteProduct/:_id", deleteProduct);
-router.get("/Nike", getNike);
-router.get("/Adidas", getAdidas);
-router.get("/Puma", getPuma);
+router.get("/Kids", getKids);
 router.get("/Men", getMen);
 router.get("/Women", getWomen);
 module.exports = router;

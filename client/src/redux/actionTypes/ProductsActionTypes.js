@@ -15,9 +15,5 @@ export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const MEN_PRODUCTS = "MEN_PRODUCTS";
 //get women products
 export const WOMEN_PRODUCTS = "WOMEN_PRODUCTS";
-//get Nike products
-export const NIKE_PRODUCTS = "NIKE_PRODUCTS";
-//get Puma products
-export const PUMA_PRODUCTS = "PUMA_PRODUCTS";
-//get Adidas products
-export const ADIDAS_PRODUCTS = "ADIDAS_PRODUCTS";
+//get Kids products
+export const KIDS_PRODUCTS = "KIDS_PRODUCTS";

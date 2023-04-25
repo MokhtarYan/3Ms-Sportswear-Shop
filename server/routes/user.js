@@ -19,7 +19,7 @@ router.post("/login", login);
 
 router.get("/auth", verifyAuth, auth);
 
-router.get("/usersList", getAllUsers);
+router.get("/userList", getAllUsers);
 
 router.put("/update/:_id", updateUser);
 module.exports = router;

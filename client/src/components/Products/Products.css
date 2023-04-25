@@ -5,6 +5,7 @@
   margin: 20px 20px 20px 20px;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
 }
 
 .proCard {
@@ -13,16 +14,28 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.addCard {
+  margin: 20px 20px 20px 20px;
+  padding: 0;
+  height: 500px;
+  width: 250px;
+  display: flex;
+}
 .proPic {
-  height: 300px;
+  height: 260px;
   width: 250px;
 }
 .proName {
   font-size: medium;
+  margin-bottom: 5px;
   font-family: Oswald, "Courier New", Courier, monospace;
 }
+.desc {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
 .proBody {
-  height: 200px;
+  height: 250px;
   margin: 0;
 
   display: flex;
@@ -178,4 +191,36 @@
 .deleteButton:hover {
   background-color: red;
   color: white;
+}
+.addButton {
+  background-color: transparent;
+  color: grey;
+  font-size: 100px;
+  height: 70px;
+  width: 70px;
+  border: none;
+  margin: 150px 75px 150px 75px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
+}
+.star {
+  display: flex;
+}
+.RateButton {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  color: #929292;
+  font-size: small;
 }

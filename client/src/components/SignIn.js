@@ -17,14 +17,18 @@ const SignIn = () => {
     const user = { email, password };
     dispatch(loginUser(user));
   };
-  const { loading, errors } = useSelector((state) => state.userReducer);
+  const { loading, errors, users } = useSelector((state) => state.userReducer);
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <form action="" onSubmit={handleSubmit} className="formSignup">
         {loading ? (
           <Spinner animation="border" variant="primary" />
         ) : localStorage.getItem("token") ? (
-          <Navigate replace to="/product/allProducts"></Navigate>
+          users.blocked ? (
+            <Navigate to="/user/blocked"></Navigate>
+          ) : (
+            <Navigate replace to="/product/allProducts"></Navigate>
+          )
         ) : (
           <>
             <MDBRow>

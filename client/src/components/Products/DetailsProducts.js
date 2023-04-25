@@ -6,6 +6,7 @@ import "./Products.css";
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import productReducer from "../../redux/reducers/productReducer";
 import { addToCart } from "../../redux/actions/actionCart";
+import ZoomImage from "./ZoomImage";
 const DetailsProducts = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.productReducer);
@@ -15,14 +16,17 @@ const DetailsProducts = () => {
   console.log(products);
   console.log(params);
   console.log(produit);
+
   return (
     <div className="detailPage">
-      <img className="imgDetails" src={produit.cover.front} alt="" />
-      <img className="imgDetails" src={produit.cover.back} alt="" />
+      <ZoomImage image={produit.cover.front} />
+      <ZoomImage image={produit.cover.back} />
+      {/* <img className="imgDetails" src={produit.cover.front} alt="" />
+      <img className="imgDetails" src={produit.cover.back} alt="" /> */}
       <div className="detailDesc">
         <h1 className="detailName">{produit.productName}</h1>
         <h3 className="detailCat">{produit.category}</h3>
-        <h6 className="detailPrice">{produit.price}D.T</h6>
+        <h6 className="detailPrice">{produit.price} TND</h6>
         <p className="detailSize">Select size:</p>
         <div className="buttons">
           <button className={produit.size.XS > 0 ? "available" : "outOfStocks"}>

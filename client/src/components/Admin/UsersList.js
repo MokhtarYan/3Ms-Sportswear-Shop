@@ -29,7 +29,7 @@ const UsersList = () => {
           <Table.Header>
             <Table.Column className=" title">User's Name</Table.Column>
             <Table.Column className=" title">Email</Table.Column>
-            <Table.Column className=" title"> Role</Table.Column>
+            <Table.Column className=" title">Role</Table.Column>
             <Table.Column className=" title">Blocked</Table.Column>
             <Table.Column className=" title">Update</Table.Column>
           </Table.Header>

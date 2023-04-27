@@ -7,9 +7,9 @@ import userReducer from "../../redux/reducers/userReducer";
 const HeaderNavv = () => {
   const { users, loading } = useSelector((state) => state.userReducer);
   return (
-    <div>
+    <div className="navv">
       <Navbar bg="light" expand="lg">
-        <Container>
+        <Container className="nn">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">

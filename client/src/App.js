@@ -21,6 +21,8 @@ import MenProducts from "./components/proC/MenProducts";
 
 import KidsProd from "./components/proC/KidsProd";
 import { useState } from "react";
+import FavItems from "./components/Fav/FavItems";
+import Footer from "./components/Home/Footer";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -47,12 +49,14 @@ function App() {
             element={<DetailsProducts />}
           />
           <Route path="/cart" element={<CartItems />} />
+          <Route path="/Fav" element={<FavItems />} />
           <Route path="/user/userList" element={<UsersList />} />
           <Route path="/user/blocked" element={<BlockedPage />} />
           <Route path="/product/Women" element={<WomenProd />} />
           <Route path="/product/Men" element={<MenProducts />} />
           <Route path="/product/Kids" element={<KidsProd />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

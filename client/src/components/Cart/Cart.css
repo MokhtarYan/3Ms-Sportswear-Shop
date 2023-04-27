@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Oswald&display=swap");
+
 .imageCart {
   height: 70px;
-  width: auto;
+  width: 60px;
 }
 .Total {
   display: flex;
@@ -9,4 +11,24 @@
   width: fit-content;
   height: 50px;
   justify-content: space-around;
+}
+.probutton {
+  height: 40px;
+  width: 40px;
+  background-color: rgba(200, 200, 200, 1);
+  color: black;
+  text-align: center;
+  font-size: medium;
+  margin-right: 3px;
+}
+.title {
+  font-family: Oswald, "Courier New", Courier, monospace;
+  font-size: medium;
+  color: black;
+}
+.desc {
+  font-family: Oswald, "Courier New", Courier, monospace;
+  font-size: small;
+  color: black;
+  border-bottom: gray solid 0.5px;
 }

@@ -38,26 +38,24 @@ const CartItems = () => {
   return (
     <div>
       <Table
-        aria-label="Example static collection table with multiple selection"
         css={{
           height: "auto",
           minWidth: "40%",
           width: "100%",
         }}
-        selectionMode="multiple"
       >
         <Table.Header>
           <Table.Column className=" title">Product Image</Table.Column>
-          <Table.Column className=" title"> Name Product</Table.Column>
+          <Table.Column className=" title">Name Product</Table.Column>
           <Table.Column className=" title">Price</Table.Column>
-          <Table.Column className=" title">Q stock</Table.Column>
-          <Table.Column className=" title">quantite</Table.Column>
-          <Table.Column className=" title">delete</Table.Column>
+          <Table.Column className=" title">Available</Table.Column>
+          <Table.Column className=" title">Quantity</Table.Column>
+          <Table.Column className=" title">Delete</Table.Column>
         </Table.Header>
 
         <Table.Body>
           {cartItems.map((el, index) => (
-            <Table.Row key={index}>
+            <Table.Row key={index} className="desc">
               <Table.Cell>
                 <img
                   className="imageCart"
@@ -65,9 +63,9 @@ const CartItems = () => {
                   alt=""
                 />
               </Table.Cell>
-              <Table.Cell>{el.product.productName}</Table.Cell>
-              <Table.Cell>{el.product.price}</Table.Cell>
-              <Table.Cell>{el.product.avQuantity}</Table.Cell>
+              <Table.Cell className="desc">{el.product.productName}</Table.Cell>
+              <Table.Cell className="desc">{el.product.price}</Table.Cell>
+              <Table.Cell className="desc">{el.product.avQuantity}</Table.Cell>
               <Table.Cell>
                 {" "}
                 <ItemQty el={el} />
@@ -88,7 +86,7 @@ const CartItems = () => {
             <Table.Cell></Table.Cell>
             <Table.Cell></Table.Cell>
             <Table.Cell>Total</Table.Cell>
-            <Table.Cell>{total} D.T</Table.Cell>
+            <Table.Cell>{total} TND</Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table>

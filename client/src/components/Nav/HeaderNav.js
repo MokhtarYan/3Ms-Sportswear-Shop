@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import userReducer from "../../redux/reducers/userReducer";
 
 import { userLogout } from "../../redux/actions/actionUsers";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 const Container = styled.div`
   height: 60px;
   width: 100%;
@@ -121,6 +121,19 @@ const HeaderNav = ({ search, handleChange }) => {
             <MenuItem>
               {isAuth ? (
                 <Link
+                  to="/Fav"
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                  }}
+                >
+                  <AiOutlineHeart />
+                </Link>
+              ) : null}
+            </MenuItem>
+            <MenuItem>
+              {isAuth ? (
+                <Link
                   to="/cart"
                   style={{
                     textDecoration: "none",
@@ -131,6 +144,7 @@ const HeaderNav = ({ search, handleChange }) => {
                 </Link>
               ) : null}
             </MenuItem>
+
             <MenuItem>
               {!isAuth ? (
                 <Link to="/signin" className="register">

@@ -35,26 +35,51 @@ const UpdateUser = ({ user }) => {
       </button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Update User</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <label htmlFor="">Blocked?</label>
-          <select name="" id="" onChange={(e) => setBlocked(e.target.value)}>
-            <option value={true}>Blocked</option>
-            <option value={false}>Not Blocked</option>
-          </select>
-
-          <label htmlFor="">Role</label>
-          <select name="" id="" onChange={(e) => setRole(e.target.value)}>
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-          </select>
+        <Modal.Body style={{ display: "flex", flexDirection: "column" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "120px",
+            }}
+          >
+            <label htmlFor="">Block:</label>
+            <select
+              name=""
+              id=""
+              style={{ width: "80px" }}
+              onChange={(e) => setBlocked(e.target.value)}
+            >
+              <option value={true}>Yes</option>
+              <option value={false}>No</option>
+            </select>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "120px",
+            }}
+          >
+            <label htmlFor="">Role:</label>
+            <select
+              name=""
+              id=""
+              style={{ width: "80px" }}
+              onChange={(e) => setRole(e.target.value)}
+            >
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={(handleSubmit, handleClose)}>
+          <Button variant="primary" onClick={handleSubmit}>
             Save Changes
           </Button>
         </Modal.Footer>

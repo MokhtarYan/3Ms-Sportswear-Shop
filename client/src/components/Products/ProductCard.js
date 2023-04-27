@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import "./Products.css";
 import { TiDeleteOutline } from "react-icons/ti";
 import { Link } from "react-router-dom";
@@ -12,6 +12,7 @@ import { deleteProduct } from "../../redux/actions/actionProducts";
 import EditProduct from "../Admin/EditProduct";
 import StarRating from "./StarRating";
 import ProductRating from "./ProductRating";
+import { addToFav } from "../../redux/actions/actionFav";
 
 const ProductCard = ({ product }) => {
   const { users } = useSelector((state) => state.userReducer);
@@ -19,45 +20,61 @@ const ProductCard = ({ product }) => {
 
   return (
     <div>
-      <Card className="proCard" style={{ width: "250px", height: "500px" }}>
+      <Card className="proCard">
         {users.userRole === "admin" ? (
-          <Button
+          <button
             className="deleteButton"
             onClick={() => dispatch(deleteProduct(product._id))}
           >
             <TiDeleteOutline className="del" />
-          </Button>
+          </button>
         ) : null}
-        <Card.Img className="proPic" variant="top" src={product.cover.front} />
+        <Link
+          to={`/product/allProducts/Details/${product._id}`}
+          style={{
+            textDecoration: "none",
+          }}
+        >
+          <Card.Img
+            className="proPic"
+            variant="top"
+            src={product.cover.front}
+          />
+        </Link>
         <Card.Body className="proBody">
-          <Card.Title className="proName">{product.productName}</Card.Title>
-          <Card.Text className="desc">{product.brand}</Card.Text>
+          <Link
+            to={`/product/allProducts/Details/${product._id}`}
+            style={{
+              textDecoration: "none",
+              color: "black",
+            }}
+          >
+            <Card.Title className="proName">{product.productName}</Card.Title>
+          </Link>
+          <Card.Text className="brand">{product.brand}</Card.Text>
           <Card.Text className="star">
             <ProductRating rating={product.rating} />
             <StarRating product={product} />
           </Card.Text>
 
-          <Card.Text className="desc">{product.price} TND</Card.Text>
           <div className="buttDiv">
-            <Button className="probutton" variant="primary">
-              <Link
-                to={`/product/allProducts/Details/${product._id}`}
-                style={{
-                  textDecoration: "none",
-                  color: "white",
-                }}
-              >
-                Details
-              </Link>
-            </Button>
-            <Button
+            <Card.Text className="brand">{product.price} TND</Card.Text>
+
+            <button
+              className="likebutton"
+              variant="primary"
+              onClick={() => dispatch(addToFav(product._id))}
+            >
+              <AiOutlineHeart />
+            </button>
+            <button
               className="probutton"
               variant="primary"
               onClick={() => dispatch(addToCart(product._id, 1))}
             >
               <AiOutlineShoppingCart />
-            </Button>
-            {users.userRole == "admin" ? (
+            </button>
+            {users.userRole === "admin" ? (
               <EditProduct product={product} />
             ) : null}
           </div>

@@ -3,9 +3,10 @@ const connectDB = require("./config/connectDB");
 const user = require("./routes/user");
 const product = require("./routes/product");
 const cart = require("./routes/cart");
-const upload = require("./routes/upload");
+
 const config = require("config");
 const Product = require("./model/Product");
+const fav = require("./model/fav");
 const port = config.get("PORT");
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(express.json());
 app.use("/user", user);
 app.use("/product", product);
 app.use("/cart", cart);
-app.use("/upload", upload);
+app.use("/Fav", fav);
 connectDB();
 const PORT = port || 5000;
 app.listen(PORT, (err) =>

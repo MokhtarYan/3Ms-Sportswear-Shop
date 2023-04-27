@@ -27,5 +27,19 @@
 }
 .nav2 {
   text-decoration: none;
-  color: black;
+  color: white;
+  font-family: Oswald, "Courier New", Courier, monospace;
+  font-size: x-large;
+  margin: 0 10px 0 10px;
+}
+.me-auto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: min-content;
+  background-color: rgba(0, 0, 0, 0.795);
+}
+.navv {
+  width: 100%;
 }

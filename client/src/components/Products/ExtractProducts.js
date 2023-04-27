@@ -20,7 +20,7 @@ const ExtractProducts = ({ search }) => {
   }, []);
 
   return (
-    <div style={{ dispaly: "flex", justifyContent: "center" }}>
+    <div className="prodList">
       {loading ? (
         <Spinner animation="border" variant="primary" />
       ) : isAuth ? (

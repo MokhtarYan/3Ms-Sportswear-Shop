@@ -46,7 +46,7 @@ exports.register = async (req, res) => {
           userRole: newUser.userRole,
         },
       });
-      sendConfirmationMail(newUser.email, newUser.activationCode);
+      // sendConfirmationMail(newUser.email, newUser.activationCode);
     } catch (error) {
       res.status(500).json({ msg: error.message });
     }

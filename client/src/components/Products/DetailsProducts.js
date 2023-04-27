@@ -7,15 +7,13 @@ import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import productReducer from "../../redux/reducers/productReducer";
 import { addToCart } from "../../redux/actions/actionCart";
 import ZoomImage from "./ZoomImage";
+import { addToFav } from "../../redux/actions/actionFav";
 const DetailsProducts = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.productReducer);
   const params = useParams();
   const prod = products.filter((el) => el._id === params.id);
   const produit = prod[0];
-  console.log(products);
-  console.log(params);
-  console.log(produit);
 
   return (
     <div className="detailPage">
@@ -26,7 +24,7 @@ const DetailsProducts = () => {
       <div className="detailDesc">
         <h1 className="detailName">{produit.productName}</h1>
         <h3 className="detailCat">{produit.category}</h3>
-        <h6 className="detailPrice">{produit.price} TND</h6>
+        <p className="detailPrice">{produit.price} TND</p>
         <p className="detailSize">Select size:</p>
         <div className="buttons">
           <button className={produit.size.XS > 0 ? "available" : "outOfStocks"}>
@@ -55,7 +53,10 @@ const DetailsProducts = () => {
           >
             Add to <AiOutlineShoppingCart />
           </button>
-          <button className="detailLike">
+          <button
+            className="detailLike"
+            onClick={() => dispatch(addToFav(produit._id))}
+          >
             Favourite <AiOutlineHeart />
           </button>
         </div>

@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateProduct } from "../../redux/actions/actionProducts";
 import { Button, Modal } from "react-bootstrap";
-
+import { AiOutlineEdit } from "react-icons/ai";
+import "../Products/Products.css";
 const EditProduct = ({ product }) => {
   const [brand, setBrand] = useState(product.brand);
   const [productName, setProductName] = useState(product.productName);
@@ -39,9 +40,9 @@ const EditProduct = ({ product }) => {
   return (
     <div>
       {" "}
-      <Button variant="primary" onClick={handleShow}>
-        Update
-      </Button>
+      <button className="editbutton" variant="primary" onClick={handleShow}>
+        <AiOutlineEdit />
+      </button>
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
           <Modal.Title>Update Product</Modal.Title>

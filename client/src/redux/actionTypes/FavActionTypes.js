@@ -1,0 +1,4 @@
+export const FAV_ADD_ITEM = "FAV_ADD_ITEM";
+export const FAV_ADD_ITEM_SUCCESS = "FAV_ADD_ITEM_SUCCESS";
+export const FAV_ADD_ITEM_FAIL = "FAV_ADD_ITEM_FAIL";
+export const FAV_REMOVE_ITEM = "FAV_REMOVE_ITEM";

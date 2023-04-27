@@ -65,7 +65,11 @@ const SignUp = () => {
               />
             </MDBRow>
 
-            {errors ? errors.errors.map((el) => <p>{el.msg}</p>) : null}
+            {!errors ? null : errors.msg ? (
+              <p>{errors.msg}</p>
+            ) : (
+              errors.errors.map((el) => <p>{el.msg}</p>)
+            )}
 
             <MDBBtn type="submit" className="mb-4" block>
               SIGN UP

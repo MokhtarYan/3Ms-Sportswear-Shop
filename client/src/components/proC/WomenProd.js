@@ -19,7 +19,7 @@ const WomenProd = () => {
   }, []);
 
   return (
-    <div>
+    <div className="prodList">
       {loading ? (
         <Spinner animation="border" variant="primary" />
       ) : isAuth ? (

@@ -23,14 +23,14 @@ export const cartReducer = (state = init, { type, payload }) => {
     case CARD_ADD_ITEM_SUCCESS:
       const item = payload;
       const existItem = state.cartItems.find(
-        (el) => el.product === item.product
+        (el) => el.product._id === item.product._id
       );
 
       if (existItem) {
         return {
           ...state,
           cartItems: state.cartItems.map((el) =>
-            el.product === existItem.product ? item : el
+            el.product._id === existItem.product._id ? item : el
           ),
         };
       } else {

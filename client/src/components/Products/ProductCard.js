@@ -54,26 +54,31 @@ const ProductCard = ({ product }) => {
           <Card.Text className="brand">{product.brand}</Card.Text>
           <Card.Text className="star">
             <ProductRating rating={product.rating} />
-            <StarRating product={product} />
+            {users.userRole === "user" ? (
+              <StarRating product={product} />
+            ) : null}
           </Card.Text>
 
           <div className="buttDiv">
             <Card.Text className="brand">{product.price} TND</Card.Text>
-
-            <button
-              className="likebutton"
-              variant="primary"
-              onClick={() => dispatch(addToFav(product._id))}
-            >
-              <AiOutlineHeart />
-            </button>
-            <button
-              className="probutton"
-              variant="primary"
-              onClick={() => dispatch(addToCart(product._id, 1))}
-            >
-              <AiOutlineShoppingCart />
-            </button>
+            {users.userRole === "user" ? (
+              <button
+                className="likebutton"
+                variant="primary"
+                onClick={() => dispatch(addToFav(product._id))}
+              >
+                <AiOutlineHeart />
+              </button>
+            ) : null}
+            {users.userRole === "user" ? (
+              <button
+                className="probutton"
+                variant="primary"
+                onClick={() => dispatch(addToCart(product._id, 1))}
+              >
+                <AiOutlineShoppingCart />
+              </button>
+            ) : null}
             {users.userRole === "admin" ? (
               <EditProduct product={product} />
             ) : null}

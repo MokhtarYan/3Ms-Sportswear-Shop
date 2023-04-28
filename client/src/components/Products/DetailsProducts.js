@@ -8,9 +8,11 @@ import productReducer from "../../redux/reducers/productReducer";
 import { addToCart } from "../../redux/actions/actionCart";
 import ZoomImage from "./ZoomImage";
 import { addToFav } from "../../redux/actions/actionFav";
+import userReducer from "../../redux/reducers/userReducer";
 const DetailsProducts = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.productReducer);
+  const { users } = useSelector((state) => state.userReducer);
   const params = useParams();
   const prod = products.filter((el) => el._id === params.id);
   const produit = prod[0];
@@ -47,18 +49,22 @@ const DetailsProducts = () => {
           >
             XXL
           </button>
-          <button
-            className="detailCart"
-            onClick={() => dispatch(addToCart(produit._id, 1))}
-          >
-            Add to <AiOutlineShoppingCart />
-          </button>
-          <button
-            className="detailLike"
-            onClick={() => dispatch(addToFav(produit._id))}
-          >
-            Favourite <AiOutlineHeart />
-          </button>
+          {users.userRole === "user" ? (
+            <div>
+              <button
+                className="detailCart"
+                onClick={() => dispatch(addToCart(produit._id, 1))}
+              >
+                Add to <AiOutlineShoppingCart />
+              </button>
+              <button
+                className="detailLike"
+                onClick={() => dispatch(addToFav(produit._id))}
+              >
+                Favourite <AiOutlineHeart />
+              </button>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

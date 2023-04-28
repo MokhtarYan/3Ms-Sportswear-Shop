@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Products.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateProduct } from "../../redux/actions/actionProducts";
 import { Button, Modal } from "react-bootstrap";
-
+import productReducer from "../../redux/reducers/productReducer";
 const StarRating = ({ product }) => {
   const [rate, setRate] = useState(0);
   const [hover, setHover] = useState(0);
@@ -12,8 +12,10 @@ const StarRating = ({ product }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const updatedProduct = {
       _id: product._id,
       brand: product.brand,

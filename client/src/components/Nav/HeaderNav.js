@@ -73,7 +73,7 @@ const MenuItem = styled.div`
 
 const HeaderNav = ({ search, handleChange }) => {
   const dispatch = useDispatch();
-  const { isAuth } = useSelector((state) => state.userReducer);
+  const { isAuth, users } = useSelector((state) => state.userReducer);
   console.log(isAuth);
   return (
     <div className="header">
@@ -119,7 +119,7 @@ const HeaderNav = ({ search, handleChange }) => {
               ) : null}
             </MenuItem>
             <MenuItem>
-              {isAuth ? (
+              {isAuth && users.userRole === "user" ? (
                 <Link
                   to="/Fav"
                   style={{
@@ -132,7 +132,7 @@ const HeaderNav = ({ search, handleChange }) => {
               ) : null}
             </MenuItem>
             <MenuItem>
-              {isAuth ? (
+              {isAuth && users.userRole === "user" ? (
                 <Link
                   to="/cart"
                   style={{

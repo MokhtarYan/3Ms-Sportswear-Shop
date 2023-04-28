@@ -64,7 +64,7 @@ const CartItems = () => {
                 />
               </Table.Cell>
               <Table.Cell className="desc">{el.product.productName}</Table.Cell>
-              <Table.Cell className="desc">{el.product.price}</Table.Cell>
+              <Table.Cell className="desc">{el.product.price} TND</Table.Cell>
               <Table.Cell className="desc">{el.product.avQuantity}</Table.Cell>
               <Table.Cell>
                 {" "}

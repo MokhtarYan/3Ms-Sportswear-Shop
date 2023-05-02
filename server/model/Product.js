@@ -10,6 +10,7 @@ const productSchema = new Schema({
   price: Number,
   color: Number,
   rating: Number,
+  ratingHist: [{ type: Object, default: [] }],
   size: {
     XS: Number,
     S: Number,

@@ -6,6 +6,7 @@ import {
   GET_PRODUCTS,
   KIDS_PRODUCTS,
   MEN_PRODUCTS,
+  RATE_PRODUCT,
   UPDATE_PRODUCT,
   WOMEN_PRODUCTS,
 } from "../actionTypes/ProductsActionTypes";
@@ -78,6 +79,8 @@ export const productReducer = (state = init, { type, payload }) => {
         products: payload,
         loading: false,
       };
+    // case RATE_PRODUCT:
+    //   return { ...state, ratefil: [...state.ratefil, payload] };
     default:
       return state;
   }

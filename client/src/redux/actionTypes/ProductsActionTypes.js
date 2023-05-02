@@ -17,3 +17,5 @@ export const MEN_PRODUCTS = "MEN_PRODUCTS";
 export const WOMEN_PRODUCTS = "WOMEN_PRODUCTS";
 //get Kids products
 export const KIDS_PRODUCTS = "KIDS_PRODUCTS";
+// rate products
+export const RATE_PRODUCT = "RATE_PRODUCT";

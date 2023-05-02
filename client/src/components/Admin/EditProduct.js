@@ -29,6 +29,7 @@ const EditProduct = ({ product }) => {
       price: price,
       color: color,
       rating: rating,
+      ratingHist: product.ratingHist,
       size: product.size,
       avQuantity: avQuantity,
     };

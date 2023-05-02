@@ -6,6 +6,7 @@ import {
   GET_PRODUCTS,
   KIDS_PRODUCTS,
   MEN_PRODUCTS,
+  RATE_PRODUCT,
   UPDATE_PRODUCT,
   WOMEN_PRODUCTS,
 } from "../actionTypes/ProductsActionTypes";
@@ -99,5 +100,12 @@ export const getKidsProd = () => async (dispatch) => {
     });
   } catch (error) {
     alert("get kids products error");
+  }
+};
+export const rateProd = (rate) => async (dispatch) => {
+  try {
+    dispatch({ type: RATE_PRODUCT, payload: rate });
+  } catch (error) {
+    alert("rate error");
   }
 };

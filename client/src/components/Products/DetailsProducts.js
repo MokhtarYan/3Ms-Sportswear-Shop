@@ -9,7 +9,7 @@ import { addToCart } from "../../redux/actions/actionCart";
 import ZoomImage from "./ZoomImage";
 import { addToFav } from "../../redux/actions/actionFav";
 import userReducer from "../../redux/reducers/userReducer";
-const DetailsProducts = () => {
+const DetailsProducts = ({ lan }) => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.productReducer);
   const { users } = useSelector((state) => state.userReducer);
@@ -26,8 +26,10 @@ const DetailsProducts = () => {
       <div className="detailDesc">
         <h1 className="detailName">{produit.productName}</h1>
         <h3 className="detailCat">{produit.category}</h3>
-        <p className="detailPrice">{produit.price} TND</p>
-        <p className="detailSize">Select size:</p>
+        <p className="detailPrice">{produit.price} $</p>
+        <p className="detailSize">
+          {lan === "FR" ? "Choisissez le taille:" : "Select size:"}
+        </p>
         <div className="buttons">
           <button className={produit.size.XS > 0 ? "available" : "outOfStocks"}>
             XS
@@ -55,13 +57,13 @@ const DetailsProducts = () => {
                 className="detailCart"
                 onClick={() => dispatch(addToCart(produit._id, 1))}
               >
-                Add to <AiOutlineShoppingCart />
+                <AiOutlineShoppingCart />
               </button>
               <button
                 className="detailLike"
                 onClick={() => dispatch(addToFav(produit._id))}
               >
-                Favourite <AiOutlineHeart />
+                <AiOutlineHeart />
               </button>
             </div>
           ) : null}

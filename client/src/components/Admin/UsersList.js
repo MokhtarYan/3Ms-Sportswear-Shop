@@ -6,7 +6,7 @@ import { Button, Modal, Spinner } from "react-bootstrap";
 import { Table } from "@nextui-org/react";
 import UpdateUser from "./UpdateUser";
 
-const UsersList = () => {
+const UsersList = ({ lan }) => {
   const { usersList, loading } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
@@ -27,11 +27,21 @@ const UsersList = () => {
           }}
         >
           <Table.Header>
-            <Table.Column className=" title">User's Name</Table.Column>
-            <Table.Column className=" title">Email</Table.Column>
-            <Table.Column className=" title">Role</Table.Column>
-            <Table.Column className=" title">Blocked</Table.Column>
-            <Table.Column className=" title">Update</Table.Column>
+            <Table.Column className=" title">
+              {lan === "FR" ? "Nom d'utilisateur" : "User's Name"}
+            </Table.Column>
+            <Table.Column className=" title">
+              {lan === "FR" ? "Adresse e-mail" : "E-mail adresse"}
+            </Table.Column>
+            <Table.Column className=" title">
+              {lan === "FR" ? "Rôle" : "Role"}
+            </Table.Column>
+            <Table.Column className=" title">
+              {lan === "FR" ? "Bloqué" : "Blocked"}
+            </Table.Column>
+            <Table.Column className=" title">
+              {lan === "FR" ? "Modifier" : "Edit"}
+            </Table.Column>
           </Table.Header>
           <Table.Body>
             {usersList.map((el) => (

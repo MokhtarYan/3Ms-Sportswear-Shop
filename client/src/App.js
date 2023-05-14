@@ -23,40 +23,57 @@ import KidsProd from "./components/proC/KidsProd";
 import { useState } from "react";
 import FavItems from "./components/Fav/FavItems";
 import Footer from "./components/Home/Footer";
+import ConfirmedPurchase from "./components/Cart/ConfirmedPurchase";
 
 function App() {
+  const [language, setLanguage] = useState("EN");
   const [search, setSearch] = useState("");
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
+  const handleChangee = (e) => {
+    setLanguage(e.target.value);
+  };
   return (
     <div className="App">
       <BrowserRouter>
-        <HeaderNav search={search} handleChange={handleChange} />
-        <HeaderNavv />
+        <HeaderNav
+          search={search}
+          handleChange={handleChange}
+          lan={language}
+          chan={handleChangee}
+        />
+        <HeaderNavv lan={language} />
         <Routes>
-          <Route exact path="/" Component={Home} />
-          <Route exact path="/signup" Component={SignUp} />
-          <Route exact path="/signin" Component={SignIn} />
+          <Route exact path="/" element={<Home lan={language} />} />
+          <Route exact path="/signup" element={<SignUp lan={language} />} />
+          <Route exact path="/signin" element={<SignIn lan={language} />} />
 
           <Route exact path="/profile" element={<Profile />} />
           <Route
             path="/product/allProducts"
-            element={<ExtractProducts search={search} />}
+            element={<ExtractProducts search={search} lan={language} />}
           />
           <Route
             path="/product/allProducts/Details/:id"
-            element={<DetailsProducts />}
+            element={<DetailsProducts lan={language} />}
           />
-          <Route path="/cart" element={<CartItems />} />
-          <Route path="/Fav" element={<FavItems />} />
-          <Route path="/user/userList" element={<UsersList />} />
-          <Route path="/user/blocked" element={<BlockedPage />} />
+          <Route path="/cart" element={<CartItems lan={language} />} />
+          <Route path="/Fav" element={<FavItems lan={language} />} />
+          <Route path="/user/userList" element={<UsersList lan={language} />} />
+          <Route
+            path="/user/blocked"
+            element={<BlockedPage lan={language} />}
+          />
           <Route path="/product/Women" element={<WomenProd />} />
           <Route path="/product/Men" element={<MenProducts />} />
           <Route path="/product/Kids" element={<KidsProd />} />
+          <Route
+            path="/cart/purchase"
+            element={<ConfirmedPurchase lan={language} />}
+          />
         </Routes>
-        <Footer />
+        <Footer lan={language} />
       </BrowserRouter>
     </div>
   );

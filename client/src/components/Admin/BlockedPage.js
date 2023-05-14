@@ -1,6 +1,6 @@
 import React from "react";
 
-const BlockedPage = () => {
+const BlockedPage = ({ lan }) => {
   return (
     <div
       style={{
@@ -15,7 +15,9 @@ const BlockedPage = () => {
         src="https://static.vecteezy.com/system/resources/previews/012/042/292/original/warning-sign-icon-transparent-background-free-png.png"
         alt=""
       />
-      <h1>Sorry! You are blocked.</h1>
+      <h1>
+        {lan === "FR" ? "Désolé! Vous êtes bloqué." : "Sorry! You are blocked."}
+      </h1>
     </div>
   );
 };

@@ -7,7 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 import { MDBBtn, MDBBtnGroup, MDBInput, MDBRow } from "mdb-react-ui-kit";
 import { loginUser } from "../redux/actions/actionUsers";
 
-const SignIn = () => {
+const SignIn = ({ lan }) => {
   const [email, setEmail] = useState();
 
   const [password, setPassword] = useState();
@@ -33,7 +33,7 @@ const SignIn = () => {
           <>
             <MDBRow>
               <label htmlFor="" className="lab">
-                E-mail adress
+                {lan === "FR" ? "Adresse e-mail" : "E-mail adress"}
               </label>
               <MDBInput
                 type="email"
@@ -42,7 +42,7 @@ const SignIn = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <label htmlFor="" className="lab">
-                Password
+                {lan === "FR" ? "Mot de passe" : "Password"}
               </label>
               <MDBInput
                 type="password"
@@ -53,7 +53,7 @@ const SignIn = () => {
             </MDBRow>
             {errors ? <p>{errors.msg}</p> : null}
             <MDBBtn type="submit" className="mb-4" block>
-              SIGN IN
+              {lan === "FR" ? "S'inscrire" : "Sign in"}
             </MDBBtn>
           </>
         )}

@@ -9,7 +9,7 @@ import "./Products.css";
 import { Navigate } from "react-router";
 import AddProduct from "../Admin/AddProduct";
 
-const ExtractProducts = ({ search }) => {
+const ExtractProducts = ({ search, lan }) => {
   const { products, loading } = useSelector((state) => state.productReducer);
   const { isAuth, users } = useSelector((state) => state.userReducer);
 
@@ -34,7 +34,7 @@ const ExtractProducts = ({ search }) => {
             )
             .map((el) => (
               <div key={el._id}>
-                <ProductCard product={el} />
+                <ProductCard product={el} lan={lan} />
               </div>
             ))}
           {users.userRole === "admin" ? <AddProduct /> : null}

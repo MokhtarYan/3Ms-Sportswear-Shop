@@ -5,7 +5,7 @@ import { updateProduct } from "../../redux/actions/actionProducts";
 import { Button, Modal } from "react-bootstrap";
 import productReducer from "../../redux/reducers/productReducer";
 
-const StarRating = ({ product }) => {
+const StarRating = ({ product, lan }) => {
   const [rate, setRate] = useState(0);
   const [hover, setHover] = useState(0);
   const [show, setShow] = useState(false);
@@ -44,7 +44,7 @@ const StarRating = ({ product }) => {
   return (
     <div>
       <button className="RateButton" onClick={handleShow}>
-        Rate!
+        {lan === "FR" ? "Evaluer" : "Rate"}
       </button>
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>

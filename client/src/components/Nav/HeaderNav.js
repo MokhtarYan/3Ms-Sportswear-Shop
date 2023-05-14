@@ -71,7 +71,7 @@ const MenuItem = styled.div`
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
-const HeaderNav = ({ search, handleChange }) => {
+const HeaderNav = ({ search, handleChange, lan, chan }) => {
   const dispatch = useDispatch();
   const { isAuth, users } = useSelector((state) => state.userReducer);
   console.log(isAuth);
@@ -83,7 +83,12 @@ const HeaderNav = ({ search, handleChange }) => {
       >
         <Wrapper>
           <Left>
-            <Language>EN</Language>
+            <Language>
+              <select name="" id="" onChange={chan}>
+                <option value="EN">EN</option>
+                <option value="FR">FR</option>
+              </select>
+            </Language>
             {isAuth ? (
               <SearchContainer>
                 <Input
@@ -94,7 +99,7 @@ const HeaderNav = ({ search, handleChange }) => {
               </SearchContainer>
             ) : (
               <SearchContainer>
-                <Input placeholder="Search" />
+                <Input placeholder={lan === "FR" ? "Rechercher" : "Search"} />
               </SearchContainer>
             )}
           </Left>
@@ -114,7 +119,7 @@ const HeaderNav = ({ search, handleChange }) => {
             <MenuItem>
               {!isAuth ? (
                 <Link to="/signup" className="register">
-                  SIGN UP
+                  {lan === "FR" ? "S'inscrire" : "Sign up"}
                 </Link>
               ) : null}
             </MenuItem>
@@ -148,7 +153,7 @@ const HeaderNav = ({ search, handleChange }) => {
             <MenuItem>
               {!isAuth ? (
                 <Link to="/signin" className="register">
-                  SIGN IN
+                  {lan === "FR" ? "Se Connecter" : "Sign in"}
                 </Link>
               ) : (
                 <Link
@@ -156,7 +161,7 @@ const HeaderNav = ({ search, handleChange }) => {
                   className="register"
                   onClick={() => dispatch(userLogout())}
                 >
-                  LOG OUT
+                  {lan === "FR" ? "Déconnecter" : "Log out"}
                 </Link>
               )}
             </MenuItem>

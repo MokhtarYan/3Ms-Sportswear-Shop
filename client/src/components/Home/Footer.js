@@ -2,7 +2,6 @@ import React from "react";
 import {
   MDBFooter,
   MDBContainer,
-  MDBIcon,
   MDBInput,
   MDBCol,
   MDBRow,
@@ -11,7 +10,7 @@ import {
 import "./Home.css";
 import { GrFacebook, GrInstagram, GrLinkedin, GrTwitter } from "react-icons/gr";
 
-const Footer = () => {
+const Footer = ({ lan }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("You are now signed up for our newsletter");
@@ -21,7 +20,9 @@ const Footer = () => {
       <MDBFooter className="text-center" color="white">
         <MDBContainer className="p-4">
           <section className="mb-4">
-            <p className="m-3">Follow us on:</p>
+            <p className="m-3">
+              {lan === "FR" ? "Abonnez vous sur:" : "Follow us on:"}
+            </p>
             <button className="m-1">
               <GrFacebook className="m-2" />
             </button>
@@ -56,7 +57,7 @@ const Footer = () => {
 
                 <MDBCol size="auto">
                   <MDBBtn outline color="light" type="submit" className="mb-4">
-                    Subscribe
+                    {lan === "FR" ? "S'abonner" : "Subscribe"}
                   </MDBBtn>
                 </MDBCol>
               </MDBRow>

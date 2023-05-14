@@ -11,7 +11,8 @@ import {
 } from "mdb-react-ui-kit";
 import Spinner from "react-bootstrap/Spinner";
 import { registerUser } from "../redux/actions/actionUsers";
-const SignUp = () => {
+
+const SignUp = ({ lan }) => {
   const [fullName, setFullName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -37,7 +38,7 @@ const SignUp = () => {
           <>
             <MDBRow>
               <label htmlFor="" className="lab">
-                Name
+                {lan === "FR" ? "Nom et Prénom" : "Name"}
               </label>
               <MDBInput
                 className="inputSignup"
@@ -46,7 +47,7 @@ const SignUp = () => {
               />
 
               <label htmlFor="" className="lab">
-                E-mail adress
+                {lan === "FR" ? "Adresse e-mail" : "E-mail adress"}
               </label>
               <MDBInput
                 type="email"
@@ -55,7 +56,7 @@ const SignUp = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <label htmlFor="" className="lab">
-                Password
+                {lan === "FR" ? "Mot de passe" : "Password"}
               </label>
               <MDBInput
                 type="password"
@@ -72,7 +73,7 @@ const SignUp = () => {
             )}
 
             <MDBBtn type="submit" className="mb-4" block>
-              SIGN UP
+              {lan === "FR" ? "S'inscrire" : "Sign up"}
             </MDBBtn>
           </>
         )}

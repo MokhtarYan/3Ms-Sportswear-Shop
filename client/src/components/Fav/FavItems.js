@@ -7,7 +7,7 @@ import { removeFromFav } from "../../redux/actions/actionFav";
 import { FiDelete } from "react-icons/fi";
 import "../Cart/Cart.css";
 import { addToCart } from "../../redux/actions/actionCart";
-const FavItems = () => {
+const FavItems = ({ lan }) => {
   const dispatch = useDispatch();
   const { favItems } = useSelector((state) => state.favReducer);
   return (
@@ -20,12 +20,26 @@ const FavItems = () => {
         }}
       >
         <Table.Header>
-          <Table.Column className=" title">Product Image</Table.Column>
-          <Table.Column className=" title">Name Product</Table.Column>
-          <Table.Column className=" title">Price</Table.Column>
+          <Table.Column className=" title">
+            {" "}
+            {lan === "FR" ? "L'image du produit" : "Product's Image"}
+          </Table.Column>
+          <Table.Column className=" title">
+            {" "}
+            {lan === "FR" ? "Produit" : "Product"}
+          </Table.Column>
+          <Table.Column className=" title">
+            {lan === "FR" ? "Prix" : "Price"}
+          </Table.Column>
 
-          <Table.Column className=" title">Delete</Table.Column>
-          <Table.Column className=" title">Buy it!</Table.Column>
+          <Table.Column className=" title">
+            {" "}
+            {lan === "FR" ? "Suprimer" : "Delete"}
+          </Table.Column>
+          <Table.Column className=" title">
+            {" "}
+            {lan === "FR" ? "Ajouter au panier" : "Add to cart"}
+          </Table.Column>
         </Table.Header>
 
         <Table.Body>
@@ -39,7 +53,7 @@ const FavItems = () => {
                 />
               </Table.Cell>
               <Table.Cell className="desc">{el.product.productName}</Table.Cell>
-              <Table.Cell className="desc">{el.product.price} TND</Table.Cell>
+              <Table.Cell className="desc">{el.product.price} $</Table.Cell>
 
               <Table.Cell>
                 {" "}

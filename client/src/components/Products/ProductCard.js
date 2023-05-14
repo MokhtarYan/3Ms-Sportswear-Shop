@@ -14,7 +14,7 @@ import StarRating from "./StarRating";
 import ProductRating from "./ProductRating";
 import { addToFav } from "../../redux/actions/actionFav";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, lan }) => {
   const { users } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
@@ -55,12 +55,12 @@ const ProductCard = ({ product }) => {
           <Card.Text className="star">
             <ProductRating rating={product.rating} />
             {users.userRole === "user" ? (
-              <StarRating product={product} />
+              <StarRating product={product} lan={lan} />
             ) : null}
           </Card.Text>
 
           <div className="buttDiv">
-            <Card.Text className="brand">{product.price} TND</Card.Text>
+            <Card.Text className="brand">{product.price} $</Card.Text>
             {users.userRole === "user" ? (
               <button
                 className="likebutton"

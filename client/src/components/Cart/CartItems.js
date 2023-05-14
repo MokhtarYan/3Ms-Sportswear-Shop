@@ -7,8 +7,19 @@ import { FiDelete } from "react-icons/fi";
 import { AiFillDelete } from "react-icons/ai";
 import { removeFromCart } from "../../redux/actions/actionCart";
 import "./Cart.css";
+import { Link } from "react-router-dom";
+import { Button, Modal } from "react-bootstrap";
+import userReducer from "../../redux/reducers/userReducer";
 
-const CartItems = () => {
+const CartItems = ({ lan }) => {
+  const { users } = useSelector((state) => state.userReducer);
+  const [show, setShow] = useState(false);
+  const [fullName, setFullName] = useState(users.fullName);
+  const [phone, setPhone] = useState();
+  const [adresse, setAdresse] = useState();
+  const [gov, setGov] = useState();
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [total, setTotal] = useState();
 
   const { cartItems } = useSelector((state) => state.cartReducer);
@@ -36,21 +47,39 @@ const CartItems = () => {
 
   const dispatch = useDispatch();
   return (
-    <div>
+    <div
+      className="Carrt"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Table
         css={{
           height: "auto",
-          minWidth: "40%",
-          width: "100%",
+
+          width: "1000px",
         }}
       >
         <Table.Header>
-          <Table.Column className=" title">Product Image</Table.Column>
-          <Table.Column className=" title">Name Product</Table.Column>
-          <Table.Column className=" title">Price</Table.Column>
+          <Table.Column className=" title">
+            {lan === "FR" ? "L'image du produit" : "Product's Image"}
+          </Table.Column>
+          <Table.Column className=" title">
+            {lan === "FR" ? "Produit" : "Product"}
+          </Table.Column>
+          <Table.Column className=" title">
+            {lan === "FR" ? "Prix" : "Price"}
+          </Table.Column>
           <Table.Column className=" title">Available</Table.Column>
-          <Table.Column className=" title">Quantity</Table.Column>
-          <Table.Column className=" title">Delete</Table.Column>
+          <Table.Column className=" title">
+            {lan === "FR" ? "Quantité" : "Quantity"}
+          </Table.Column>
+          <Table.Column className=" title">
+            {lan === "FR" ? "Suprimer" : "Delete"}
+          </Table.Column>
         </Table.Header>
 
         <Table.Body>
@@ -64,7 +93,7 @@ const CartItems = () => {
                 />
               </Table.Cell>
               <Table.Cell className="desc">{el.product.productName}</Table.Cell>
-              <Table.Cell className="desc">{el.product.price} TND</Table.Cell>
+              <Table.Cell className="desc">{el.product.price} $</Table.Cell>
               <Table.Cell className="desc">{el.product.avQuantity}</Table.Cell>
               <Table.Cell>
                 {" "}
@@ -86,10 +115,92 @@ const CartItems = () => {
             <Table.Cell></Table.Cell>
             <Table.Cell></Table.Cell>
             <Table.Cell>Total</Table.Cell>
-            <Table.Cell>{total} TND</Table.Cell>
+            <Table.Cell>{total} $</Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table>
+
+      <Button
+        className="purButton"
+        variant="outline-secondary"
+        onClick={handleShow}
+      >
+        Confirm Purchase
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>User's informations:</Modal.Title>
+        </Modal.Header>
+        <Modal.Body style={{ display: "flex", flexDirection: "column" }}>
+          <div>
+            <label htmlFor="">Full Name:</label>
+            <input
+              type="text"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="">Email</label>
+            <input type="text" value={users.email} readOnly />
+          </div>
+          <div>
+            <label htmlFor="">Phone</label>
+
+            <input
+              type="text"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="">Gouvernorat</label>
+            <select name="" id="">
+              <option value="Ariana">Ariana</option>
+              <option value="Béja">Béja</option>
+              <option value="Ben Arous">Ben Arous</option>
+              <option value="Bizerte">Bizerte</option>
+              <option value="Gabès">Gabès</option>
+              <option value="Gafsa">Gafsa</option>
+              <option value="Jendouba">Jendouba</option>
+              <option value="Kairouan">Kairouan</option>
+              <option value="Kasserine">Kasserine</option>
+              <option value="Kébili">Kébili</option>
+              <option value="Le Kef">Le Kef</option>
+              <option value="Mahdia">Mahdia</option>
+              <option value="La Manouba">La Manouba</option>
+              <option value="Médenine">Médenine</option>
+              <option value="Monastir">Monastir</option>
+              <option value="Nabeul">Nabeul</option>
+              <option value="Sfax">Sfax</option>
+              <option value="Sidi Bouzid">Sidi Bouzid</option>
+              <option value="Siliana">Siliana</option>
+              <option value="Sousse">Sousse</option>
+              <option value="Tataouine">Tataouine</option>
+              <option value="Tozeur">Tozeur</option>
+              <option value="Tunis">Tunis</option>
+              <option value="Zaghouan">Zaghouan</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="">Adresse</label>
+            <input
+              type="text"
+              value={adresse}
+              onChange={(e) => setAdresse(e.target.value)}
+            />
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

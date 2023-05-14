@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import "./header.css";
 import { useSelector } from "react-redux";
 import userReducer from "../../redux/reducers/userReducer";
-const HeaderNavv = () => {
+
+const HeaderNavv = ({ lan }) => {
   const { users, loading } = useSelector((state) => state.userReducer);
   return (
     <div className="navv">
@@ -26,25 +27,25 @@ const HeaderNavv = () => {
               <Nav.Link>
                 {" "}
                 <Link to={"/product/allProducts"} className="nav2">
-                  Products
+                  {lan === "FR" ? "Produits" : "Products"}
                 </Link>
               </Nav.Link>
               <Nav.Link>
                 {" "}
                 <Link to={"/product/Women"} className="nav2">
-                  Women
+                  {lan === "FR" ? "Femmes" : "Women"}
                 </Link>
               </Nav.Link>
               <Nav.Link>
                 {" "}
                 <Link to={"/product/Men"} className="nav2">
-                  Men
+                  {lan === "FR" ? "Hommes" : "Men"}
                 </Link>
               </Nav.Link>
               <Nav.Link>
                 {" "}
                 <Link to={"/product/Kids"} className="nav2">
-                  Kids
+                  {lan === "FR" ? "Enfants" : "Kids"}
                 </Link>
               </Nav.Link>
             </Nav>
